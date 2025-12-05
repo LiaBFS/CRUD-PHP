@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Cadastro</h1><br><br>
+                <h1>Preencha os campos</h1><br><br>
                 <form action="cadastro_script.php" method="POST">
                     <div class="form-group">
                         <label for="nome">Informe o nome da planta:</label>
@@ -38,7 +38,10 @@
                         <input type="submit" class="btn btn-success">
                         
                     </div>
-                </form>
+                </form><br>
+
+                <a href="index.php" class="btn btn-primary">Voltar</a>
+
             </div>
         </div>
     </div>

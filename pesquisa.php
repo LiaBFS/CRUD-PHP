@@ -8,25 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
 
-    <title>Floricultura</title>
+    <title>Cadastro Floricultura</title>
   </head>
   <body>
 
     <div class="container">
-
         <div class="row">
             <div class="col">
-               <div class="jumbotron">
+                <h1>Procure Plantas</h1><br><br>
                 
-              <h1 class="display-4">Bem vindo ao sistema de Cadastro de Plantas!!</h1>
 
-              <p class="lead">Escolha incluir novas plantas ou editar/excluir plantas já incluidas na lista</p>
-              <hr class="my-4">
+                <a href="index.php" class="btn btn-primary">Voltar</a>
 
-              <p>Funções: </p>
-
-              <a class="btn btn-primary btn-lg" href="cadastro.php" role="button">Realizar Cadastro</a>
-              <a class="btn btn-primary btn-lg" href="pesquisa.php" role="button">Pesquisar Plantas</a>
             </div>
         </div>
     </div>
