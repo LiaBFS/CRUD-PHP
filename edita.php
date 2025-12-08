@@ -8,39 +8,51 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
 
-    <title>Cadastro Floricultura</title>
+    <title>Edição de Plantas</title>
   </head>
   <body>
+
+    <?php
+        include "conexao.php";
+        $id = $_GET['id'] ?? '';
+
+        $sql = "SELECT * FROM plantas WHERE id_planta = $id";
+        $dados = mysqli_query($conn, $sql);
+
+        $linha = mysqli_fetch_assoc($dados);
+
+    ?>
 
     <div class="container">
         <div class="row">
             <div class="col">
                 <h1>Preencha os campos</h1><br><br>
-                <form action="cadastro_script.php" method="POST">
+                <form action="edicao_script.php" method="POST">
                     <div class="form-group">
-                        <label for="nome">Informe o nome da planta:</label>
-                        <input type="text" class="form-control" placeholder="Ex. 'Orquídea'" name ="nome" required><br>
+                        <label for="nome">Nome da planta:</label>
+                        <input type="text" class="form-control" name ="nome" value="<?php echo $linha['nome']; ?>"><br>
                         
                     </div>
 
                     <div class="form-group">
-                        <label for="nomeCientifico">Informe o nome  científico da planta:</label>
-                        <input type="text" class="form-control" placeholder="Ex. 'Orchidaceae'" name ="nomeCientifico" required><br>
+                        <label for="nomeCientifico">Nome  científico da planta:</label>
+                        <input type="text" class="form-control" name ="nomeCientifico" value="<?php echo $linha['nomeCientifico']; ?>"><br>
                         
                     </div>
 
                     <div class="form-group">
-                        <label for="quantidade">Informe a quantidade de sementes em estoque:</label>
-                        <input type="text" class="form-control" placeholder="Quantidade de sementes" name ="quantidade" required><br>
+                        <label for="quantidade">Quantidade de sementes em estoque:</label>
+                        <input type="text" class="form-control" name ="quantidade" value="<?php echo $linha['quantidade']; ?>"><br>
                         
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success">
+                        <input type="submit" class="btn btn-success" value="Salvar Alterações">
+                        <input type="hidden" name="id" value ="<?php echo $linha['id_planta']; ?>">
                         
                     </div>
                 </form><br>
 
-                <a href="inicial.php" class="btn btn-primary">Voltar</a>
+                <a href="pesquisa.php" class="btn btn-primary">Voltar</a>
 
             </div>
         </div>
