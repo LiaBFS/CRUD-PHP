@@ -72,7 +72,8 @@
                                         <td>$quantidade</td>
                                         <td width= 150px>
                                             <a href='edita.php?id=$id_planta' class='btn btn-info btn-sm'>Editar</a>
-                                            <a href='' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirma'>Excluir</a>
+                                            <a href='#' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirma' 
+                                               onclick=\"pegaDados('$id_planta', '$nome')\">Excluir</a>
                                         
                                         </td>
                                 
@@ -92,22 +93,25 @@
         </div>
     </div>
 
+
     <div class="modal fade" id="confirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Planta</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <form action="excluir_script.php" method="POST">
-               <p>Deseja apagar </p>
-               <p id="nome_planta"></p>
+                <form action="excluir_script.php" method="POST" id="formExcluir">
+                    <p>Deseja realmente excluir a planta <strong id="nome_planta"></strong>?</p>
+                    <input type="hidden" name="id" id="id_planta">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                <input type="submit" class="btn btn-danger" value ="Sim">
-            </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <input type="submit" class="btn btn-danger" value="Sim">
+                </form>
             </div>
             </div>
         </div>
@@ -115,11 +119,15 @@
 
   <!-- Optional JavaScript-->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/
-  X+965Dz00rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="
-  sha384-U02eT@CpHqdSJQ6hJty5KVphtPhzWj9W01c1HTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="
-  sha384-3j5mVgyd@p3pXB1rRibZUAYOIIy60rQ6VrjIEaFf/nJGzIxFDsf4x0xIM+807jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965Dz00rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-U02eT@CpHqdSJQ6hJty5KVphtPhzWj9W01c1HTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-3j5mVgyd@p3pXB1rRibZUAYOIIy60rQ6VrjIEaFf/nJGzIxFDsf4x0xIM+807jRM" crossorigin="anonymous"></script>
+  
+  <script>
+    function pegaDados(id, nome) {
+        document.getElementById('id_planta').value = id;
+        document.getElementById('nome_planta').innerText = nome;
+    }
+  </script>
   </body>
   </html>
